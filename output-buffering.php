@@ -6,13 +6,11 @@
  * Description:       Buffers the entire WP process, capturing the final output for manipulation.
  * Version:           1.0.2
  * Author:            Daniel M. Hendricks
+ * Original Author:   kfriend (http://stackoverflow.com/a/22818089/3799374)
  * Author URI:        https://www.danhendricks.com
  * License:           GPL-2.0
  * License URI:       https://opensource.org/licenses/GPL-2.0
- */
-
-/*
- * Original author: http://stackoverflow.com/a/22818089/3799374
+ * GitHub Plugin URI: dmhendricks/wordpress-output-buffering
  */
 
 ob_start();
