@@ -4,6 +4,14 @@ A simple [mu-plugin](https://codex.wordpress.org/Must_Use_Plugins) that buffers 
 
 [Original code](http://stackoverflow.com/a/22818089/3799374) by [kfriend](https://stackoverflow.com/users/419673/kfriend) on Stack Overflow. Licensed as GPL because it is a WordPress derivative.
 
+### Example Usage
+
+```
+add_filter( 'final_output', function($output) {
+    return str_replace('foo', 'bar', $output);
+});
+```
+
 ## Changelog
 
 **1.0.2 (master)**
