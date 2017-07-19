@@ -1,0 +1,27 @@
+{
+  "name": "dmhendricks/wordpress-output-buffering",
+  "type": "wordpress-plugin",
+  "description": "A simple mu-plugin that buffers the entire WP process, capturing the final output for manipulation.",
+  "keywords": ["wordpress", "plugin", "mu-plugin", "output", "buffering"],
+  "homepage": "https://github.com/dmhendricks/wordpress-output-buffering",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "kfriend",
+      "homepage": "https://stackoverflow.com/users/419673/kfriend",
+      "role": "Developer"
+    },
+    {
+      "name": "Daniel M. Hendricks",
+      "homepage": "https://danhendricks.com",
+      "role": "Contributor"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/dmhendricks/wordpress-output-buffering/issues/",
+    "source": "https://github.com/dmhendricks/wordpress-output-buffering/"
+  },
+  "require": {
+    "php": ">=5.3.2"
+  }
+}
