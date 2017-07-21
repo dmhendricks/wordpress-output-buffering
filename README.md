@@ -4,7 +4,11 @@ A simple [mu-plugin](https://codex.wordpress.org/Must_Use_Plugins) that buffers 
 
 [Original code](http://stackoverflow.com/a/22818089/3799374) by [kfriend](https://stackoverflow.com/users/419673/kfriend) on Stack Overflow. Licensed as GPL because it is a WordPress derivative.
 
-### Usage
+## Installation
+
+To install, simply download and copy `output-buffering.php` to your `/wp-content/mu-plugins` directory.
+
+## Usage
 
 ##### Simple Example
 
@@ -16,7 +20,7 @@ add_filter( 'final_output', function($output) {
 });
 ```
 
-### Configuration
+## Configuration
 
 By default, output buffering is only **enabled** on the *frontend* of the site and is **disabled** for *WP Admin* and during *AJAX* requests.
 
