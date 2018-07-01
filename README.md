@@ -4,6 +4,8 @@ A simple [mu-plugin](https://codex.wordpress.org/Must_Use_Plugins) that buffers 
 
 [Original code](http://stackoverflow.com/a/22818089/3799374) by [kfriend](https://stackoverflow.com/users/419673/kfriend) on Stack Overflow. Licensed as GPL because it is a WordPress derivative.
 
+[![Analytics](https://ga-beacon.appspot.com/UA-67333102-2/dmhendricks/wordpress-output-buffering?flat)](https://ga-beacon.appspot.com/?utm_source=github.com&utm_medium=campaign&utm_content=button&utm_campaign=wordpress-output-buffering)
+
 ## Installation
 
 To install, simply download and copy `output-buffering.php` to your `/wp-content/mu-plugins` directory.
@@ -42,7 +44,7 @@ define( 'OB_REQUEST_TYPES', array( 'site', 'admin', 'ajax' ) ); // Case-sensitiv
 In the example above, output buffering is enable on the frontend ("site"), in WP Admin ("admin") and during AJAX requests ("ajax"). Add or remove from the array as desired. For example, to **only** load output buffering in WP Admin and **not** on the frontend or during AJAX calls:
 
 ```
-define( 'OB_ENABLE_SCREENS', array( 'admin' ) ); // Case-sensitive
+define( 'OB_ENABLE_SCREENS', array( 'admin' ) );
 ```
 
 ##### Caution
@@ -53,7 +55,10 @@ Always test first before using in a production setting!
 
 ## Changelog
 
-**1.0.3 (master)**
+**1.0.4**
+* Disabled when doing WP JSON (for Gutenberg compatibility)
+
+**1.0.3**
 * Added wp-config.php constants to control where output buffering is enabled.
 
 **1.0.0**

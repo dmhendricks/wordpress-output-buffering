@@ -4,7 +4,7 @@
  * Plugin Name:       Output Buffering
  * Plugin URI:        https://github.com/dmhendricks/wordpress-output-buffering
  * Description:       Buffers the entire WP process, capturing the final output for manipulation.
- * Version:           1.0.3
+ * Version:           1.0.4
  * Author:            Daniel M. Hendricks
  * Original Author:   kfriend (https://stackoverflow.com/users/419673/kfriend)
  * Author URI:        https://www.danhendricks.com
@@ -12,13 +12,13 @@
  * License URI:       https://opensource.org/licenses/GPL-2.0
  * GitHub Plugin URI: dmhendricks/wordpress-output-buffering
  */
-namespace TwoLab\MustUse;
+namespace CloudVerve\MustUse;
 
 class OutputBuffering {
 
   public function __construct() {
 
-    if($this->can_load()) $this->output_buffering();
+    if( $this->can_load() ) $this->output_buffering();
 
   }
 
@@ -35,18 +35,17 @@ class OutputBuffering {
 
     ob_start();
 
-    add_action('shutdown', function() {
+    add_action( 'shutdown', function() {
       $final = '';
 
       // Iterate over each OB level
       $levels = ob_get_level();
-      for ($i = 0; $i < $levels; $i++)
-      {
+      for ( $i = 0; $i < $levels; $i++ ) {
         $final .= ob_get_clean();
       }
 
       // Apply any filters to the final output
-      echo apply_filters('final_output', $final);
+      echo apply_filters( 'final_output', $final );
     }, 0);
 
   }
@@ -59,14 +58,14 @@ class OutputBuffering {
     */
   private function get_load_screens() {
 
-    if( defined('OB_ENABLE_SCREENS')) {
-      return is_array(OB_ENABLE_SCREENS) ? OB_ENABLE_SCREENS : array( OB_ENABLE_SCREENS );
+    if( defined( 'OB_ENABLE_SCREENS' ) ) {
+      return is_array( OB_ENABLE_SCREENS ) ? OB_ENABLE_SCREENS : array( OB_ENABLE_SCREENS );
     }
 
     $screens = array( 'site' );
-    if( defined('OB_ENABLE_ADMIN') || defined('OB_ENABLE_AJAX') ) {
-      if( defined('OB_ENABLE_ADMIN') && OB_ENABLE_ADMIN ) $screens[] = 'admin';
-      if( defined('OB_ENABLE_AJAX') && OB_ENABLE_AJAX ) $screens[] = 'ajax';
+    if( defined( 'OB_ENABLE_ADMIN' ) || defined( 'OB_ENABLE_AJAX' ) ) {
+      if( defined( 'OB_ENABLE_ADMIN' ) && OB_ENABLE_ADMIN ) $screens[] = 'admin';
+      if( defined( 'OB_ENABLE_AJAX' ) && OB_ENABLE_AJAX ) $screens[] = 'ajax';
     }
 
     return $screens;
@@ -80,6 +79,8 @@ class OutputBuffering {
     * @return bool Whether or not output buffering should be performed.
     */
   private function can_load() {
+
+    if( strpos( $_SERVER['REQUEST_URI'], '/wp-json' ) === 0 ) return false;
 
     $load_screens = $this->get_load_screens();
     $load_admin   = is_admin() && in_array( 'admin', $load_screens );
@@ -96,7 +97,7 @@ class OutputBuffering {
     * @return bool
     */
   private function is_ajax() {
-    return defined('DOING_AJAX') && DOING_AJAX;
+    return defined( 'DOING_AJAX' ) && DOING_AJAX;
   }
 
 }

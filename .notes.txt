@@ -1,0 +1,4 @@
+Usual DOM parser: https://github.com/wasinger/htmlpagedom
+Simple removing text example: https://stackoverflow.com/a/12510430/3799374
+PHP DOM Documentation (search for ->removeChild()): http://php.net/manual/en/domdocument.loadhtml.php
+  - removeChild, insertAfter, insertbefore: http://php.net/manual/en/domnode.removechild.php
