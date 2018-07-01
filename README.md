@@ -10,6 +10,8 @@ A simple [mu-plugin](https://codex.wordpress.org/Must_Use_Plugins) that buffers 
 
 To install, simply download and copy `output-buffering.php` to your `/wp-content/mu-plugins` directory.
 
+Requires PHP 5.3 or higher.
+
 ## Usage
 
 ##### Simple Example
@@ -18,7 +20,7 @@ This code will replace any instance of "foo" on the web page with "bar":
 
 ```
 add_filter( 'final_output', function($output) {
-    return str_replace('foo', 'bar', $output);
+    return str_replace( 'foo', 'bar', $output );
 });
 ```
 
@@ -28,7 +30,7 @@ By default, output buffering is only **enabled** on the *frontend* of the site a
 
 You can modify this behavior and specify on which request/screen types that you want to enable it by adding the following constants to `wp-config.php`:
 
-##### PHP (any version)
+##### PHP (PHP 5.3+)
 
 ```
 define( 'OB_ENABLE_ADMIN', true ); // Enables output buffering in WP Admin
@@ -53,10 +55,14 @@ Take care when changing this behavior! You may experience issues when enabling i
 
 Always test first before using in a production setting!
 
+##### Tip
+
+Use [HtmlPageDom](https://github.com/wasinger/htmlpagedom) in conjunction for jQuery-like DOM manipulation in PHP.
+
 ## Changelog
 
 **1.0.4**
-* Disabled when doing WP JSON (for Gutenberg compatibility)
+* Disabled for WP JSON (Gutenberg compatibility)
 
 **1.0.3**
 * Added wp-config.php constants to control where output buffering is enabled.
