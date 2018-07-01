@@ -12,6 +12,10 @@ To install, simply download and copy `output-buffering.php` to your `/wp-content
 
 Requires PHP 5.3 or higher.
 
+#### Tip
+
+Use [HtmlPageDom](https://github.com/wasinger/htmlpagedom) in conjunction for jQuery-like DOM manipulation in PHP.
+
 ## Usage
 
 ##### Simple Example
@@ -30,14 +34,14 @@ By default, output buffering is only **enabled** on the *frontend* of the site a
 
 You can modify this behavior and specify on which request/screen types that you want to enable it by adding the following constants to `wp-config.php`:
 
-##### PHP (PHP 5.3+)
+#### PHP (PHP 5.3+)
 
 ```
 define( 'OB_ENABLE_ADMIN', true ); // Enables output buffering in WP Admin
 define( 'OB_ENABLE_AJAX', true ); // Enables output buffering during AJAX calls
 ```
 
-##### PHP 7.0 and Higher
+#### PHP 7.0 and Higher
 
 ```
 define( 'OB_REQUEST_TYPES', array( 'site', 'admin', 'ajax' ) ); // Case-sensitive
@@ -49,15 +53,11 @@ In the example above, output buffering is enable on the frontend ("site"), in WP
 define( 'OB_ENABLE_SCREENS', array( 'admin' ) );
 ```
 
-##### Caution
+#### Caution
 
 Take care when changing this behavior! You may experience issues when enabling in WP Admin or during AJAX calls if your manipulation logic interferes with normal WordPress function.
 
 Always test first before using in a production setting!
-
-##### Tip
-
-Use [HtmlPageDom](https://github.com/wasinger/htmlpagedom) in conjunction for jQuery-like DOM manipulation in PHP.
 
 ## Changelog
 
@@ -65,7 +65,7 @@ Use [HtmlPageDom](https://github.com/wasinger/htmlpagedom) in conjunction for jQ
 * Disabled for WP JSON (Gutenberg compatibility)
 
 **1.0.3**
-* Added wp-config.php constants to control where output buffering is enabled.
+* Added `wp-config.php` constants to control where output buffering is enabled.
 
 **1.0.0**
 * Initial commit
