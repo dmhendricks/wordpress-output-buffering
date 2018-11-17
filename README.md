@@ -23,7 +23,7 @@ Use [HtmlPageDom](https://github.com/wasinger/htmlpagedom) in conjunction for jQ
 This code will replace any instance of "foo" on the web page with "bar":
 
 ```
-add_filter( 'final_output', function($output) {
+add_filter( 'final_output', function( $output ) {
     return str_replace( 'foo', 'bar', $output );
 });
 ```

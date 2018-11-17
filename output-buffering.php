@@ -4,7 +4,7 @@
  * Plugin Name:       Output Buffering
  * Plugin URI:        https://github.com/dmhendricks/wordpress-output-buffering
  * Description:       Buffers the entire WP process, capturing the final output for manipulation.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Author:            Daniel M. Hendricks
  * Original Author:   kfriend (https://stackoverflow.com/users/419673/kfriend)
  * Author URI:        https://www.danhendricks.com
@@ -80,7 +80,7 @@ class OutputBuffering {
     */
   private function can_load() {
 
-    if( strpos( $_SERVER['REQUEST_URI'], '/wp-json' ) === 0 ) return false;
+    if( strpos( $_SERVER['REQUEST_URI'], '/wp-json' ) === 0 || ( defined( 'WP_CLI' ) && WP_CLI ) ) return false;
 
     $load_screens = $this->get_load_screens();
     $load_admin   = is_admin() && in_array( 'admin', $load_screens );
